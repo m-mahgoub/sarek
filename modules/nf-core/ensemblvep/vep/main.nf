@@ -34,6 +34,8 @@ process ENSEMBLVEP_VEP {
     def dir_cache = cache ? "\${PWD}/${cache}" : "/.vep"
     def reference = fasta ? "--fasta $fasta" : ""
     """
+    export PATH=/opt/conda/envs/nf-core-vep-108.2/bin/:\$PATH
+
     vep \\
         -i $vcf \\
         -o ${prefix}.${file_extension}.gz \\

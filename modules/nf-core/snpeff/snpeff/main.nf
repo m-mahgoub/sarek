@@ -33,6 +33,8 @@ process SNPEFF_SNPEFF {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def cache_command = cache ? "-dataDir \${PWD}/${cache}" : ""
     """
+    export PATH=\$PATH:/opt/conda/envs/nf-core-snpeff-5.1/bin
+
     snpEff \\
         -Xmx${avail_mem}M \\
         $db \\

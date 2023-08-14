@@ -41,6 +41,8 @@ process GATK4_CNNSCOREVARIANTS {
         avail_mem = (task.memory.mega*0.8).intValue()
     }
     """
+    export PATH=/gatk:/opt/miniconda/envs/gatk/bin:/opt/miniconda/bin::\$PATH
+
     gatk --java-options "-Xmx${avail_mem}M" CNNScoreVariants \\
         --variant $vcf \\
         --output ${prefix}.cnn.vcf.gz \\
